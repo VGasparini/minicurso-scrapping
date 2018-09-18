@@ -17,6 +17,6 @@ class NoticiasPipeline(object):
       self.file.close()
 
     def process_item(self, item, spider):
-      line =  json.dumps(dict(item),ensure_ascii=False).encode('utf8') + '\n'
+      line =  json.dumps(dict(item), ensure_ascii=False).encode('utf8') + '\n'
       self.file.write(line)
       return item
