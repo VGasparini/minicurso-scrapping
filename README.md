@@ -226,7 +226,7 @@ def process_item(self, item, spider):
 	else:
 		raise DropItem("Sem autor no item {}".format(item))
 
-return item
+	return item
 ```
 
 **— Alterando o item**
@@ -252,9 +252,9 @@ class NoticiasPipeline(object):
 		self.file.close()
 
 	def process_item(self, item, spider):
-      line =  json.dumps(dict(item), ensure_ascii=False).encode('utf8') + '\n'
-      self.file.write(line)
-      return item
+		line =  json.dumps(dict(item), ensure_ascii=False).encode('utf8') + '\n'
+		self.file.write(line)
+      		return item
 ```
 
 Diferentes pipelines podem ser empilhados, ou seja, podemos ter um pipeline para  **realizar a filtragem**  (decidir se o item é importante), outro para  **limpar a informação**  (retirando tags html se necessário) e por último um pipeline para  **salvar a informação no banco de dados**. Dessa forma os três exemplos anteriores podem estar em pipelines diferentes.
